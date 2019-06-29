@@ -20,7 +20,14 @@ public class BootstrapTemperature implements CommandLineRunner {
     public void run(String... args) throws Exception {
        String[] cities= {"tehran","karaj","shiraz","london"};
        for(int i=0;i<cities.length; i++){
-           temperatureRepository.save(new Temperature(cities[i],weather.getTempByCity(cities[i])));
+
+           temperatureRepository.save(new Temperature(cities[i],
+                   weather.getTempByCity(cities[i]),
+                   weather.getMinTempByCity(cities[i]),
+                   weather.getMaxTempByCity(cities[i]),
+                   weather.getPressureByCity(cities[i]),
+                   weather.getHumidityByCity(cities[i])
+           ));
        }
     }
 }

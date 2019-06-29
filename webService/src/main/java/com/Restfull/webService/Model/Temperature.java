@@ -12,10 +12,18 @@ public class Temperature {
     private Long id;
     private String city;
     private String temp;
+    private String temp_min;
+    private String temp_max;
+    private String pressure;
+    private String humidity;
 
-    public Temperature(String city, String temp) {
+    public Temperature(String city, String temp, String temp_min, String temp_max, String pressure, String humidity) {
         this.city = city;
         this.temp = temp;
+        this.temp_min = temp_min;
+        this.temp_max = temp_max;
+        this.pressure = pressure;
+        this.humidity = humidity;
     }
 
     public Temperature() {
@@ -35,5 +43,45 @@ public class Temperature {
 
     public void setTemp(String temp) {
         this.temp = temp;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTemp_min() {
+        return temp_min;
+    }
+
+    public void setTemp_min(String temp_min) {
+        this.temp_min = temp_min;
+    }
+
+    public String getTemp_max() {
+        return temp_max;
+    }
+
+    public void setTemp_max(String temp_max) {
+        this.temp_max = temp_max;
+    }
+
+    public String getPressure() {
+        return pressure;
+    }
+
+    public void setPressure(String pressure) {
+        this.pressure = pressure;
+    }
+
+    public String getHumidity() {
+        return humidity;
+    }
+
+    public void setHumidity(String humidity) {
+        this.humidity = humidity;
     }
 }

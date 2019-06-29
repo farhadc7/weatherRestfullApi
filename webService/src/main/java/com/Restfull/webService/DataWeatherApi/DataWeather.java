@@ -17,7 +17,27 @@ public class DataWeather {
 
     public String getTempByCity(String cityName){
         String rawTempInfo=getIpiInfo(cityName);
-        String temp=getTemp(rawTempInfo);
+        String temp=getTemp(rawTempInfo,"temp=\\d*.\\d*",5);
+        return temp;
+    }
+    public String getMinTempByCity(String cityName){
+        String rawTempInfo=getIpiInfo(cityName);
+        String temp=getTemp(rawTempInfo,"temp_min=\\d*.\\d*",9);
+        return temp;
+    }
+    public String getMaxTempByCity(String cityName){
+        String rawTempInfo=getIpiInfo(cityName);
+        String temp=getTemp(rawTempInfo,"temp_max=\\d*.\\d*",9);
+        return temp;
+    }
+    public String getPressureByCity(String cityName){
+        String rawTempInfo=getIpiInfo(cityName);
+        String temp=getTemp(rawTempInfo,"pressure=\\d*.\\d*",9);
+        return temp;
+    }
+    public String getHumidityByCity(String cityName){
+        String rawTempInfo=getIpiInfo(cityName);
+        String temp=getTemp(rawTempInfo,"humidity=\\d*.\\d*",9);
         return temp;
     }
 
@@ -34,19 +54,21 @@ public class DataWeather {
         for(Map.Entry<String,Object> a: map.entrySet()){
             if(a.getKey().equals("list")){
                 temp=a.getValue();
+                System.out.println(temp);
             }
         }
         return temp.toString();
     }
-    private String getTemp(String name){
+    private String getTemp(String name,String regexPattern,int cutPoint){
         String result="";
-        Pattern pattern=Pattern.compile("temp=\\d*.\\d*");
+        Pattern pattern=Pattern.compile(regexPattern);
         Matcher m1 =pattern.matcher(name);
         if(m1.find()){
             String m2=m1.group();
-            result =m2.substring(5);
+            result =m2.substring(cutPoint);
         }
         return result;
     }
+
 
 }

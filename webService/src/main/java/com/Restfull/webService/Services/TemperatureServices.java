@@ -18,11 +18,9 @@ public class TemperatureServices {
     public Optional<Temperature> findByCity(String city){
 
         List<Temperature> temps= repository.findAll();
-        System.out.println(temps.size());
         for(Temperature t : temps){
             t.getCity();
             if(t.getCity().equals(city)){
-                System.out.println(t.getCity()+" winner");
                 return Optional.ofNullable(t);
             }
         }

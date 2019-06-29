@@ -54,7 +54,6 @@ public class DataWeather {
         for(Map.Entry<String,Object> a: map.entrySet()){
             if(a.getKey().equals("list")){
                 temp=a.getValue();
-                System.out.println(temp);
             }
         }
         return temp.toString();

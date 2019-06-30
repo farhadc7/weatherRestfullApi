@@ -26,6 +26,10 @@ public class Temperature {
         this.humidity = humidity;
     }
 
+    public Temperature(String city) {
+        this.city = city;
+    }
+
     public Temperature() {
     }
 

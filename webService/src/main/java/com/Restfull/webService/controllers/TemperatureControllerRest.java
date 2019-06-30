@@ -17,10 +17,11 @@ public class TemperatureControllerRest {
         this.temperatureServices = temperatureServices;
     }
 
-    @PostMapping("/{city}")
-    public Temperature findTemperature(@PathVariable(name = "city") String city){
+    @PostMapping("")
+    public Temperature findTemperature(@RequestBody Temperature requestedTemp){
+
         Temperature temp=new Temperature();
-        Optional<Temperature> opt=temperatureServices.findByCity(city);
+        Optional<Temperature> opt=temperatureServices.findByCity(requestedTemp.getCity());
         if(opt.isPresent()){
             temp= opt.get();
         }else{
@@ -30,3 +31,4 @@ public class TemperatureControllerRest {
         return temp;
     }
 }
+
